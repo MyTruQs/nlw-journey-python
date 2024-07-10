@@ -40,8 +40,8 @@ class TripsRepository:
             """
                 UPDATE trips 
                     SET status = 1 
-                    WHERE 
-                        id = ?
+                WHERE 
+                    id = ?
             """, (trip_id,)
         )
         self.__conn.commit()
