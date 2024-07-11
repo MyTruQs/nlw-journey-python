@@ -38,10 +38,15 @@ class TripsRepository:
         cursor = self.__conn.cursor()
         cursor.execute(
             """
-                UPDATE trips 
-                    SET status = 1 
-                WHERE 
-                    id = ?
-            """, (trip_id,)
+                UPDATE trips
+                SET status = CASE 
+                    WHEN EXISTS (SELECT 1 FROM trips WHERE id = ?) 
+                    THEN 1 
+                    ELSE status 
+                END
+                WHERE id = ?
+            """, (trip_id, trip_id)
         )
+        if cursor.rowcount == 0:
+            raise ValueError(f"The trip with the ID you chose does not exist..")
         self.__conn.commit()
