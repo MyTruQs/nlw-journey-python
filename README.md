@@ -20,7 +20,7 @@ Este projeto é um sistema de gerenciamento de viagens desenvolvido durante o in
 
 1. Clone o repositório:
     ```
-    git clone https://github.com/MyTruQs/nlw-python.git
+    git clone https://github.com/MyTruQs/nlw-journey-python.git
     ```
 2. Instale as dependências:
     ```
